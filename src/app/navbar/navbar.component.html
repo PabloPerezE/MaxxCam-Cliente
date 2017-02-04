@@ -1,0 +1,82 @@
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" routerLink="home"><!--<img alt="icon" src="">--> <span style="color: white">Maxx</span><span style="color: goldenrod">Cam</span></a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+      <ul class="nav navbar-nav">
+        <li class="active"><a routerLink="home"><span class="fa fa-home fa-fw"></span> Inicio<span class="sr-only"></span></a></li>
+        <li class=""><a (click)="cat()"><span class="fa fa-camera-retro fa-fw"></span> Todas las cámaras </a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="fa fa-list-ul fa-fw"></span> Categorías <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li *ngFor="let item of lista"><a (click)="cat(item.categoria)">{{ item.categoria }}</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="fa fa-shopping-cart fa-fw"></span> Carrito <span class="badge">42</span></a>
+          <ul class="dropdown-menu">
+            <cart></cart>
+          </ul>
+        </li>
+        <li *ngIf="logged()">
+          <a routerLink="admin"><span class="fa fa-cogs fa-fw" ></span> Panel de control</a>
+        </li>
+        <li *ngIf="logged()" class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="fa fa-user fa-fw"></span> Mi Cuenta <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a (click)="logout()">Cerrar sesión</a></li>
+          </ul>
+        </li>
+        <li class="dropdown" *ngIf="!logged()">
+          <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-sign-in fa-fw"></span> Iniciar sesión<b class="caret"></b></a>
+          <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
+            <li>
+              <div class="row">
+                <div class="col-md-12">
+                  <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav" [formGroup]="loginform">
+                    <div class="form-group">
+                      <label class="sr-only" for="exampleInputEmail2">Correo electrónico</label>
+                      <input type="email" class="form-control" id="correo" placeholder="Correo electrónico" formControlName="correo" required>
+                    </div>
+                    <div class="form-group">
+                      <label class="sr-only" for="exampleInputPassword2">Contraseña</label>
+                      <input type="password" class="form-control" id="contrasena" placeholder="Contraseña" formControlName="contrasena" required>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox"> Recordarme
+                      </label>
+                    </div>
+                    <div class="form-group">
+                      <button type="submit" class="btn btn-success btn-block" (click)="login()">Iniciar sesión</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </li>         
+            <li>
+              <div class="text-center form-group"> 
+                <a><span class="fa fa-question-circle fa-fw"></span> Olvidé mi contraseña</a>
+              </div>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <label for="crear" class="btn btn-primary btn-block"><span class="fa fa-user-plus fa-fw"></span> Crear una cuenta</label>
+              <input class="hidden" type="button" id="crear">
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

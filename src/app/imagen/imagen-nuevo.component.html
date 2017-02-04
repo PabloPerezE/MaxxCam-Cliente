@@ -1,0 +1,50 @@
+      <form novalidate [formGroup]="form" class="form-horizontal">
+          <div class="container-fluid">
+        <div class="form-group">
+            <label for="id" class="col-sm-2 control-label">Id</label>
+            <div class="col-sm-10">
+                <input readonly type="number" class="form-control" id="id" placeholder="Id" formControlName="id">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="nombre" class="col-sm-2 control-label">Nombre</label>
+            <div class="col-sm-10">
+            <input type="text" class="col-sm-10 form-control" id="nombre" placeholder="Nombre" formControlName="nombre">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="foto" class="col-sm-2 control-label">Foto</label>
+            <div class="col-sm-10">
+            <input type="file" class="col-sm-10 form-control" id="foto" placeholder="Foto" (change)="previewFile()">
+            <img id="prev" class="" src="{{ form.value.foto }}" height="200px" width="200px" alt="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="descripcion" class="col-sm-2 control-label">Producto</label>
+            <div class="col-sm-10">
+            <select formControlName="Producto_id" id="producto" class="col-sm-10 form-control">
+                <option *ngFor="let prd of productos" value="{{ prd.id }}">{{ prd.descripcion }}</option>
+            </select>
+            </div>
+        </div>
+        <div class="form-group ">
+            <label for="estado" class="col-sm-2 control-label">Estado</label>
+            <div class="col-sm-5">
+            <div class="btn-group">
+                <label id="activo" class="btn btn-default btn-on active" (click)="toggle('activo','inactivo')">
+                    <input type="radio" class=""  value="1" name="estado" formControlName="estado">
+                    &nbsp; Activo &nbsp;
+                </label>
+                <label id="inactivo" class="btn btn-default btn-on" (click)="toggle('inactivo','activo')">
+                    <input type="radio" class="" value="0" name="estado" formControlName="estado">
+                    Inactivo
+                </label>
+            </div>
+            </div>
+        </div>
+          </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="regresar()">Cancelar</button>
+        <button type="submit" (click)="guardarImagen()" class="btn btn-primary">Acceptar</button>
+        </div>
+      </form>

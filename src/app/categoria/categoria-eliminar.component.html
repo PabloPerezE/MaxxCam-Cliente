@@ -1,0 +1,29 @@
+<div class="table-responsive">
+            <table id="tabla" class="table table-striped table-bordered table-condenced">
+                <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of lista; let last = last">
+                <td>{{ item.id }}</td>
+                <td>{{ item.categoria }}</td>
+               <td>
+                    <div style="text-align: center">
+                    <span class="btn btn-defult btn-xs" (click)="recuperarCategoria(item)">
+                        <i class="fa fa-undo fa-fw text-info" aria-hidden="true"></i>
+                    </span>
+                    <span class="btn btn-defult btn-xs" (click)="eliminar(item)">
+                        <i class="fa fa-ban fa-fw text-danger" aria-hidden="true"></i>
+                    </span>
+                    </div>
+                </td>
+                {{last ? callFunction(item) : ''}}
+            </tr>
+        </tbody>
+        
+            </table>
+            </div>

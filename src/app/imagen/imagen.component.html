@@ -1,0 +1,28 @@
+<style>
+
+.panel.with-nav-tabs .panel-heading{
+    padding: 5px 5px 0 5px;
+}
+.panel.with-nav-tabs .nav-tabs{
+	border-bottom: none;
+}
+</style>
+<div id="alert" alert ></div>
+<div class="panel with-nav-tabs panel-primary">
+    
+    <div class="panel-heading">
+        <ul class="nav nav-tabs">
+            <li id="nuevo" class="pull-right"><a (click)="nuevo()" data-toggle="tab"><i class="fa fa-plus fa-fw"></i> Nuevo</a></li>
+            <li id="eliminar" class="pull-right"><a data-toggle="tab" (click)="papelera()"><i class="fa fa-trash fa-fw"></i> Papelera</a></li>
+            <li id="vista" class="pull-right"><a data-toggle="tab" (click)="vista()"><i class="fa fa-eye fa-fw"></i> Registro</a></li>
+            <div class="clearfix"><h3 class="panel-title" style="padding: 10px 10px">Lista de Imagenes</h3></div>
+        </ul>
+    </div>
+    <div class="panel-body">
+        <div class="tab-content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+
+    
