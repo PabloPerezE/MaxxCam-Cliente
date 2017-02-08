@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { CatalogoComponent } from '../catalogo/catalogo.component';
 import { Subject } from 'rxjs/Subject';
 @Component({
@@ -14,6 +14,7 @@ export class CartComponent implements OnInit {
   cart;
 
   constructor(
+    private zone:NgZone,
    // private catalogo: CatalogoComponent
   ) { }
 
@@ -29,7 +30,7 @@ export class CartComponent implements OnInit {
 
     if (!window.sessionStorage.getItem('CartItems')){
     this.carritoLleno = false;}
-
+ 
     else{
       this.cartItems = JSON.parse(window.sessionStorage.getItem('CartItems'));
     }*/
@@ -37,12 +38,16 @@ export class CartComponent implements OnInit {
    this.updateCart();
   }
   updateCart() {
-    this.cart = JSON.parse(window.sessionStorage.getItem('CartItems'));
+    setInterval(() => {
+      this.cart = JSON.parse(window.sessionStorage.getItem('CartItems'));
+    },1000);
     console.log(this.cart);
-    console.log(JSON.parse(window.sessionStorage.getItem('CartItems')));
+    //this.cart = this.cart.slice();
   }
+
   addCart(){
-    this.cartItems.next(JSON.parse('dasdas'))
+    this.cartItems.next(JSON.parse('dasdas'));
+    this.updateCart();
   }
 
 }

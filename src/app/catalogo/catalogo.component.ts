@@ -31,7 +31,7 @@ export class CatalogoComponent implements OnInit, OnDestroy {
   ) { 
     this.subscription = route.params.subscribe(
       (params: any) => {this.param = params['categoria'];
-      console.log(this.param);
+      //console.log(this.param);
       if (!this.param) this.param = 'any';
 
       this.servicio.getProductos(this.param)
@@ -75,7 +75,6 @@ export class CatalogoComponent implements OnInit, OnDestroy {
   /*
 addCart(item) {
 this._myService.add(item);}*/
-
   addCart(item) {
     if (window.sessionStorage.getItem('CartItems')){
     let anterior = JSON.parse(window.sessionStorage.getItem('CartItems'));
@@ -86,7 +85,12 @@ this._myService.add(item);}*/
     cart.push(item);
     window.sessionStorage.setItem('CartItems', JSON.stringify(cart));
     }
-    this.cartC.updateCart();
+}
+decode(){
+  if(this.param == "any")
+  return "";
+
+  return decodeURI(this.param);
 }
 
   /*addCart(item) {
@@ -101,5 +105,6 @@ this._myService.add(item);}*/
     cart.push(item);
     window.sessionStorage.setItem('CartItems', JSON.stringify(cart));
 }*/
+
 
 }

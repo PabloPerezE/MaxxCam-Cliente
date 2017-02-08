@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -16,7 +16,7 @@ import { CartComponent } from './cart.component';
   providers: [AuthService,NavbarService,CartComponent]
 })
 export class NavbarComponent implements OnInit {
-  
+
   loginform: FormGroup;
   subscription: Subscription;
   lista: Categoria[];
