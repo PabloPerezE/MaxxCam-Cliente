@@ -60,6 +60,7 @@ import { EtiquetaProductoComponent } from './etiqueta-producto/etiqueta-producto
 import { EtiquetaProductoNuevoComponent } from './etiqueta-producto/etiqueta-producto-nuevo.component';
 import { EtiquetaProductoEliminarComponent } from './etiqueta-producto/etiqueta-producto-eliminar.component';
 import { EtiquetaProductoVistaComponent } from './etiqueta-producto/etiqueta-producto-vista.component';
+import { AdminhomeComponent } from './admin/adminhome.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { EtiquetaProductoVistaComponent } from './etiqueta-producto/etiqueta-pro
     EtiquetaProductoNuevoComponent,
     EtiquetaProductoEliminarComponent,
     EtiquetaProductoVistaComponent,
+    AdminhomeComponent,
   ],
   imports: [
     BrowserModule,

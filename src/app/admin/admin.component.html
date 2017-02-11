@@ -3,51 +3,21 @@
         <div class="col-md-3">
             <ul class="nav nav-pills nav-stacked">
                 <li id="menu-inicio"><a (click)="menu()" routerLink="/admin">Inicio<span class="fa fa-home fa-fw pull-right" aria-hidden="true"></span></a></li>
-                <li id="menu-usuarios"><a routerLink="usuarios/usuario-vista">Usuarios<span class="fa fa-users fa-fw pull-right" aria-hidden="true"></span></a></li>
-                <li id="menu-tipos"><a routerLink="tipoUsuarios/tipoUsuario-vista">Tipos de Usuario<span class="fa fa-id-card-o fa-fw pull-right" aria-hidden="true"></span></a></li>
-                <li id="menu-productos"><a routerLink="productos/producto-vista">Productos<span class="fa fa-camera-retro fa-fw pull-right" aria-hidden="true"></span></a></li>
-                <li id="menu-categorias"><a routerLink="categorias/categoria-vista">Categorías<span class="fa fa-list-ul fa-fw pull-right" aria-hidden="true"></span></a></li>
-                <li id="menu-etiquetas"><a routerLink="etiquetas/etiqueta-vista">Etiquetas<span class="fa fa-tags fa-fw pull-right" aria-hidden="true"></span></a></li>
-                <li id="menu-etiquetasProducto"><a routerLink="etiquetas-producto/etiqueta-producto-vista">Productos y etiquetas<span class="fa fa-tags fa-fw pull-right" aria-hidden="true"></span></a></li>
-                <li id="menu-imagenes"><a routerLink="imagenes/imagen-vista">Imágenes<span class="fa fa-picture-o fa-fw pull-right" aria-hidden="true"></span></a></li>
-                <li id="menu-orden"><a routerLink="ordenesCompra/ordenCompra-vista">Órdenes de compra<span class="fa fa-file-text-o fa-fw pull-right" aria-hidden="true"></span></a></li>
+                <li id="menu-usuarios"><a (click)="dashboard()" routerLink="usuarios/usuario-vista">Usuarios<span class="fa fa-users fa-fw pull-right" aria-hidden="true"></span></a></li>
+                <li id="menu-tipos"><a (click)="dashboard()" routerLink="tipoUsuarios/tipoUsuario-vista">Tipos de Usuario<span class="fa fa-id-card-o fa-fw pull-right" aria-hidden="true"></span></a></li>
+                <li id="menu-productos"><a (click)="dashboard()" routerLink="productos/producto-vista">Productos<span class="fa fa-camera-retro fa-fw pull-right" aria-hidden="true"></span></a></li>
+                <li id="menu-categorias"><a (click)="dashboard()" routerLink="categorias/categoria-vista">Categorías<span class="fa fa-list-ul fa-fw pull-right" aria-hidden="true"></span></a></li>
+                <li id="menu-etiquetas"><a (click)="dashboard()" routerLink="etiquetas/etiqueta-vista">Etiquetas<span class="fa fa-tags fa-fw pull-right" aria-hidden="true"></span></a></li>
+                <li id="menu-etiquetasProducto"><a (click)="dashboard()" routerLink="etiquetas-producto/etiqueta-producto-vista">Productos y etiquetas<span class="fa fa-tags fa-fw pull-right" aria-hidden="true"></span></a></li>
+                <li id="menu-imagenes"><a (click)="dashboard()" routerLink="imagenes/imagen-vista">Imágenes<span class="fa fa-picture-o fa-fw pull-right" aria-hidden="true"></span></a></li>
+                <li id="menu-orden"><a (click)="dashboard()" routerLink="ordenesCompra/ordenCompra-vista">Órdenes de compra<span class="fa fa-file-text-o fa-fw pull-right" aria-hidden="true"></span></a></li>
             </ul>
         </div>
         <div class="container-fluid col-md-9">
           <div class="">
               <alert></alert>
             <router-outlet></router-outlet>
-            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">
-                                        <span class="fa fa-cogs fa-fw"></span> Panel de Control</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-xs-4 col-md-4">
-                                        <a routerLink="usuarios/usuario-vista" class="btn btn-success btn-lg btn-block" role="button"><span class="fa fa-users fa-fw"></span> <br/>Usuarios</a>
-                                        </div>
-                                        <div class="col-xs-4 col-md-4">
-                                        <a routerLink="tipoUsuarios/tipoUsuario-vista" class="btn btn-danger btn-lg btn-block" role="button"><span class="fa fa-id-card-o fa-fw"></span> <br/>Tipo de usuarios</a>
-                                        </div>
-                                        <div class="col-xs-4 col-md-4">
-                                        <a routerLink="productos/producto-vista" class="btn btn-primary btn-lg btn-block" role="button"><span class="fa fa-camera-retro fa-fw"></span> <br/>Productos</a>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-4 col-md-4">
-                                        <a routerLink="categorias/categoria-vista" class="btn btn-warning btn-lg btn-block" role="button"><span class="fa fa-list-ul fa-fw"></span> <br/>Categorías</a>
-                                        </div>
-                                        <div class="col-xs-4 col-md-4">
-                                        <a routerLink="etiquetas/etiqueta-vista" class="btn btn-warning btn-lg btn-block" role="button"><span class="fa fa-tags fa-fw"></span> <br/>Etiquetas</a>
-                                        </div>
-                                        <div class="col-xs-4 col-md-4">
-                                        <a routerLink="imagenes/imagen-vista" class="btn btn-primary btn-lg btn-block" role="button"><span class="fa fa-picture-o fa-fw"></span> <br/>Imágenes</a>
-                                        </div>
-                                    </div>
-                                    <a routerLink="ordenesCompra/ordenCompra-vista" class="btn btn-success btn-lg btn-block" role="button"><span class="fa fa-file-text-o fa-fw"></span> Órdenes de compra</a>
-                                </div>
-                            </div>
+              <adminhome *ngIf="homemenu"></adminhome>
           </div>
         </div>
     </div>

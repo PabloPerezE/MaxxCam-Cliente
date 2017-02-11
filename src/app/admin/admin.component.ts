@@ -12,6 +12,8 @@ export class AdminComponent implements OnInit {
     username: '',
     password: ''
   }*/
+  homemenu = true;
+
   constructor(/*private auth: AuthService*/) { }
 
   ngOnInit() {
@@ -27,6 +29,7 @@ export class AdminComponent implements OnInit {
   }
 
   menu() {
+    this.homemenu = true;
     document.getElementById("menu-inicio").className += " active";
     document.getElementById("menu-usuarios").className = document.getElementById("menu-usuarios").className.replace( /(?:^|\s)active(?!\S)/g , '' );
     document.getElementById("menu-tipos").className = document.getElementById("menu-tipos").className.replace( /(?:^|\s)active(?!\S)/g , '' );
@@ -37,6 +40,11 @@ export class AdminComponent implements OnInit {
     document.getElementById("menu-imagenes").className = document.getElementById("menu-imagenes").className.replace( /(?:^|\s)active(?!\S)/g , '' );
     document.getElementById("menu-orden").className = document.getElementById("menu-orden").className.replace( /(?:^|\s)active(?!\S)/g , '' );
   }
+
+  dashboard() {
+    this.homemenu = false
+  }
+
 
 
 
