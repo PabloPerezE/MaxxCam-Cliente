@@ -52,6 +52,7 @@ export class CategoriaNuevoComponent implements OnInit {
         id: this.flag})}
         else {
           this.flag = 1;
+          this.form.patchValue({id:this.flag});
         }
       }
     )

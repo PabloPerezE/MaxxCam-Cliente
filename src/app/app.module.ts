@@ -56,6 +56,10 @@ import { OrdenCompraEliminarComponent } from './ordenCompra/ordenCompra-eliminar
 
 import { AlertComponent } from './admin/alert.component';
 import { CartComponent } from './navbar/cart.component';
+import { EtiquetaProductoComponent } from './etiqueta-producto/etiqueta-producto.component';
+import { EtiquetaProductoNuevoComponent } from './etiqueta-producto/etiqueta-producto-nuevo.component';
+import { EtiquetaProductoEliminarComponent } from './etiqueta-producto/etiqueta-producto-eliminar.component';
+import { EtiquetaProductoVistaComponent } from './etiqueta-producto/etiqueta-producto-vista.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +73,10 @@ import { CartComponent } from './navbar/cart.component';
     OrdenCompraComponent, OrdenCompraNuevoComponent, OrdenCompraVistaComponent, OrdenCompraEliminarComponent,
     AlertComponent,
     CartComponent,
+    EtiquetaProductoComponent,
+    EtiquetaProductoNuevoComponent,
+    EtiquetaProductoEliminarComponent,
+    EtiquetaProductoVistaComponent,
   ],
   imports: [
     BrowserModule,

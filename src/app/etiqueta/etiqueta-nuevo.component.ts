@@ -24,7 +24,6 @@ declare var $: any;
 export class EtiquetaNuevoComponent implements OnInit {
 
   form: FormGroup;
-  formProducto: FormGroup;
   listaId;
   flag = 1;
 
@@ -53,6 +52,7 @@ export class EtiquetaNuevoComponent implements OnInit {
         id: this.flag})}
         else {
           this.flag = 1;
+          this.form.patchValue({id:this.flag});
         }
       }
     )
@@ -68,10 +68,6 @@ export class EtiquetaNuevoComponent implements OnInit {
       descripcion: ['', Validators.required],
       estado: ['1', Validators.required],
     })
-
-    this.formProducto = this.fb.group({
-      producto: ['', Validators.required],
-    })
   }
 
   guardarEtiqueta() {
@@ -79,19 +75,19 @@ export class EtiquetaNuevoComponent implements OnInit {
     .subscribe(
       rs => console.log(rs),
       er => {this.alert.setAlert('danger', '<span class="fa fa-times fa-fw"></span> Error: No se pudo accesar a la base de datos.', this.form.value.id);
-        let link = ['/admin/etiquetas/etiqueta-vista'];
+        let link = ['/admin/etiquetas-producto/etiqueta-producto-vista'];
         this.router.navigate(link);
       },
       () => {
         this.alert.setAlert('success', '<span class="fa fa-check fa-fw"></span> Nueva etiqueta creada satisfactoriamente.', this.form.value.id);
-        let link = ['/admin/etiquetas/etiqueta-vista'];
+        let link = ['/admin/etiquetas-producto/etiqueta-producto-vista'];
         this.router.navigate(link);
       }
     )
   }
 
   regresar(){
-    let link = ['/admin/etiquetas/etiqueta-vista'];
+    let link = ['/admin/etiquetas-producto/etiqueta-producto-vista'];
     this.router.navigate(link);
   }
 

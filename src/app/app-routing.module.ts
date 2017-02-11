@@ -32,6 +32,11 @@ import { EtiquetaNuevoComponent } from './etiqueta/etiqueta-nuevo.component';
 import { EtiquetaVistaComponent } from './etiqueta/etiqueta-vista.component';
 import { EtiquetaEliminarComponent } from './etiqueta/etiqueta-eliminar.component';
 
+import { EtiquetaProductoComponent } from './etiqueta-producto/etiqueta-producto.component';
+import { EtiquetaProductoNuevoComponent } from './etiqueta-producto/etiqueta-producto-nuevo.component';
+import { EtiquetaProductoVistaComponent } from './etiqueta-producto/etiqueta-producto-vista.component';
+import { EtiquetaProductoEliminarComponent } from './etiqueta-producto/etiqueta-producto-eliminar.component';
+
 import { ImagenComponent } from './imagen/imagen.component';
 import { ImagenNuevoComponent } from './imagen/imagen-nuevo.component';
 import { ImagenVistaComponent } from './imagen/imagen-vista.component';
@@ -83,6 +88,13 @@ const routes: Routes = [
       { path: 'etiqueta-vista/:id', component: EtiquetaVistaComponent},
       { path: 'etiqueta-papelera', component: EtiquetaEliminarComponent},
       { path: 'etiqueta-nuevo', component: EtiquetaNuevoComponent},
+    ]},
+    { path: 'etiquetas-producto', component: EtiquetaProductoComponent, children: [
+      { path: ''},
+      { path: 'etiqueta-producto-vista', component: EtiquetaProductoVistaComponent},
+      { path: 'etiqueta-producto-vista/:id', component: EtiquetaProductoVistaComponent},
+      { path: 'etiqueta-producto-papelera', component: EtiquetaProductoEliminarComponent},
+      { path: 'etiqueta-producto-nuevo', component: EtiquetaProductoNuevoComponent},
     ]},
     { path: 'imagenes', component: ImagenComponent, children: [
       { path: ''},

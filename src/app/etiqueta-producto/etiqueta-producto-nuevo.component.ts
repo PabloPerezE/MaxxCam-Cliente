@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductoService } from './producto.service';
-import { Producto } from './producto';
+import { EtiquetaProductoService } from './etiqueta-producto.service';
+import { EtiquetaProducto } from './etiqueta-producto';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertComponent } from '../admin/alert.component';
-import { Categoria } from './categoria';
+import { Etiqueta } from '../etiqueta/etiqueta';
+import { Producto } from '../producto/producto';
 
 declare var $: any;
 
 @Component({
-  selector: 'producto-nuevo',
-  templateUrl: './producto-nuevo.component.html',
+  selector: 'etiqueta-producto-nuevo',
+  templateUrl: './etiqueta-producto-nuevo.component.html',
   styles: [`
   .btn-default.btn-on.active {
     background-color: #1a242f;
@@ -20,30 +21,39 @@ declare var $: any;
     display: none;
   }
   `],
-  providers: [ProductoService, AlertComponent]
+  providers: [EtiquetaProductoService, AlertComponent]
 })
-export class ProductoNuevoComponent implements OnInit {
+export class EtiquetaProductoNuevoComponent implements OnInit {
 
   form: FormGroup;
-  categorias: Categoria[];
+  formProducto: FormGroup;
   listaId;
+  etiquetas: Etiqueta[];
+  productos: Producto[];
   flag = 1;
 
   constructor(
     private alert: AlertComponent,
     private route: ActivatedRoute,
     private router: Router,
-    private servicio: ProductoService,
+    private servicio: EtiquetaProductoService,
     private fb: FormBuilder,
   ) { this.crearControles(); }
 
   ngOnInit() {
 
-    this.servicio.getCategorias()
+    this.servicio.getEtiquetas()
     .subscribe(
-      rs => this.categorias = rs,
+      rs => this.etiquetas = rs,
       er => {this.alert.setAlert('danger', '<span class="fa fa-times fa-fw"></span> Error: No se pudo accesar a la base de datos.','ewwefwewer');},
-      () => console.log(this.categorias)
+      () => console.log(this.etiquetas)
+    )
+
+    this.servicio.getProductos()
+    .subscribe(
+      rs => this.productos = rs,
+      er => {this.alert.setAlert('danger', '<span class="fa fa-times fa-fw"></span> Error: No se pudo accesar a la base de datos.','ewwefwewer');},
+      () => console.log(this.productos)
     )
 
     this.servicio.getListaId()
@@ -65,7 +75,7 @@ export class ProductoNuevoComponent implements OnInit {
         }
       }
     )
-  
+
     document.getElementById("nuevo").className += " active";
     document.getElementById("vista").className = document.getElementById("vista").className.replace( /(?:^|\s)active(?!\S)/g , '' );
     document.getElementById("eliminar").className = document.getElementById("eliminar").className.replace( /(?:^|\s)active(?!\S)/g , '' );
@@ -74,33 +84,31 @@ export class ProductoNuevoComponent implements OnInit {
   crearControles() {
     this.form = this.fb.group({
       id: ['', Validators.required],
-      descripcion: ['', Validators.required],
-      detalle: ['', Validators.required],
-      precio: ['', Validators.required],
-      Categoria_id: ['', Validators.required],
+      Etiqueta_id: ['', Validators.required],
+      Producto_id: ['', Validators.required],
       estado: ['1', Validators.required],
     })
   }
 
-  guardarProducto() {
+  guardarEtiquetaProducto() {
     console.log(this.form.value);
-    this.servicio.addProducto(this.form.value)
+    this.servicio.addEtiquetaProducto(this.form.value)
     .subscribe(
       rs => console.log(rs),
       er => {this.alert.setAlert('danger', '<span class="fa fa-times fa-fw"></span> Error: No se pudo accesar a la base de datos.', this.form.value.id);
-        let link = ['/admin/productos/producto-vista'];
+        let link = ['/admin/etiquetas-producto/etiqueta-producto-vista'];
         this.router.navigate(link);
       },
       () => {
-        this.alert.setAlert('success', '<span class="fa fa-check fa-fw"></span> Nuevo producto creado satisfactoriamente.', this.form.value.id);
-        let link = ['/admin/productos/producto-vista'];
+        this.alert.setAlert('success', '<span class="fa fa-check fa-fw"></span> Nueva etiqueta con producto creada satisfactoriamente.', this.form.value.id);
+        let link = ['/admin/etiquetas-producto/etiqueta-producto-vista'];
         this.router.navigate(link);
       }
     )
   }
 
   regresar(){
-    let link = ['/admin/productos/producto-vista'];
+    let link = ['/admin/etiquetas-producto/etiqueta-producto-vista'];
     this.router.navigate(link);
   }
 

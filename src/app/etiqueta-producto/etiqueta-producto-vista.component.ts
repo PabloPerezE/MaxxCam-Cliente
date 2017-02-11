@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { EtiquetaService } from './etiqueta.service';
-import { Etiqueta } from './etiqueta';
+import { EtiquetaProductoService } from './etiqueta-producto.service';
+import { EtiquetaProducto } from './etiqueta-producto';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertComponent} from '../admin/alert.component';
@@ -8,8 +8,8 @@ import { AlertComponent} from '../admin/alert.component';
 declare var $: any;
 
 @Component({
-  selector: 'etiqueta-vista',
-  templateUrl: './etiqueta-vista.component.html',
+  selector: 'etiqueta-producto-vista',
+  templateUrl: './etiqueta-producto-vista.component.html',
   styles: [`
   .btn-default.btn-on.active {
     background-color: #1a242f;
@@ -19,33 +19,51 @@ declare var $: any;
     display: none;
   }
   `],
-  providers: [EtiquetaService, AlertComponent]
+  providers: [EtiquetaProductoService, AlertComponent]
 })
-export class EtiquetaVistaComponent implements OnInit {
+export class EtiquetaProductoVistaComponent implements OnInit {
 
   //@Output() alert: EventEmitter<any> = new EventEmitter();
 
   form: FormGroup;
-  lista: Etiqueta[];
-  seleccion: Etiqueta[];
+  lista: EtiquetaProducto[];
+  seleccion: EtiquetaProducto[];
+  etiquetas;
+  productos;
 
   constructor(
     private alert: AlertComponent,
     private route: ActivatedRoute,
     private router: Router,
-    private servicio: EtiquetaService,
+    private servicio: EtiquetaProductoService,
     private fb: FormBuilder,
   ) { this.crearControles(); }
 
   ngOnInit() {
+
+    
 
     document.getElementById("vista").className += " active";
     document.getElementById("nuevo").className = document.getElementById("nuevo").className.replace( /(?:^|\s)active(?!\S)/g , '' );
     document.getElementById("eliminar").className = document.getElementById("eliminar").className.replace( /(?:^|\s)active(?!\S)/g , '' );
 
     //this.alert.emit({value: 'Mensaje de alerta'});
-    
+
     this.servicio.getEtiquetas()
+    .subscribe(
+      rs => this.etiquetas = rs,
+      er => {this.alert.setAlert('danger', '<span class="fa fa-times fa-fw"></span> Error: No se pudo accesar a la base de datos.','ewwefwewer');},
+      () => console.log(this.etiquetas)
+    )
+
+    this.servicio.getProductos()
+    .subscribe(
+      rs => this.productos = rs,
+      er => {this.alert.setAlert('danger', '<span class="fa fa-times fa-fw"></span> Error: No se pudo accesar a la base de datos.','ewwefwewer');},
+      () => console.log(this.productos)
+    )
+    
+    this.servicio.getEtiquetasProducto()
     .subscribe(
       rs => this.lista = rs,
       er => {this.alert.setAlert('danger', '<span class="fa fa-times fa-fw"></span> Error: No se pudo accesar a la base de datos.','ewwefwewer');},
@@ -67,7 +85,7 @@ export class EtiquetaVistaComponent implements OnInit {
     if (!$('#myModal').hasClass('in'))
     $('#myModal').modal('show');
 
-    this.servicio.getEtiqueta(id)
+    this.servicio.getEtiquetaProducto(id)
     .subscribe(
       rs => this.seleccion = rs,
       er => console.log(er),
@@ -75,7 +93,10 @@ export class EtiquetaVistaComponent implements OnInit {
         if (this.seleccion.length > 0) {
           this.form.patchValue({
             id: this.seleccion[0].id,
-            descripcion: this.seleccion[0].descripcion,
+            Etiqueta_id: this.seleccion[0].Etiqueta_id,
+            etiqueta: this.seleccion[0].etiqueta,
+            Producto_id: this.seleccion[0].Producto_id,
+            producto: this.seleccion[0].producto,
             estado: this.seleccion[0].estado,
           })
         }
@@ -96,14 +117,14 @@ export class EtiquetaVistaComponent implements OnInit {
     }
   }
 
-  actualizarEtiqueta(){
+  actualizarEtiquetaProducto(){
     if (!this.form.value) return;
-    this.servicio.putEtiqueta(this.form.value)
+    this.servicio.putEtiquetaProducto(this.form.value)
     .subscribe(
       rs => console.log(rs),
       er => {this.alert.setAlert('danger', '<span class="fa fa-times fa-fw"></span> Error: No se pudo accesar a la base de datos.',this.form.value.id );},
       () => {
-        this.alert.setAlert('success', '<span class="fa fa-check fa-fw"></span> Etiqueta actualizada.', this.form.value.id);
+        this.alert.setAlert('success', '<span class="fa fa-check fa-fw"></span> Etiqueta con producto actualizada.', this.form.value.id);
         this.regresar();
       }
     )
@@ -112,13 +133,14 @@ export class EtiquetaVistaComponent implements OnInit {
   crearControles() {
     this.form = this.fb.group({
       id: ['', Validators.required],
-      descripcion: ['', Validators.required],
+      Etiqueta_id: ['', Validators.required],
+      Producto_id: ['', Validators.required],
       estado: ['', Validators.required],
     })
   }
 
-  editar(item: Etiqueta){
-    let link = ['/admin/etiquetas/etiqueta-vista', item.id];
+  editar(item: EtiquetaProducto){
+    let link = ['/admin/etiquetas-producto/etiqueta-producto-vista', item.id];
     this.router.navigate(link);
 
     $('.modal-backdrop').click(function(e){
@@ -128,14 +150,15 @@ export class EtiquetaVistaComponent implements OnInit {
     }.bind(this));
   }
 
-  borrar(item: Etiqueta){
+  borrar(item: EtiquetaProducto){
+    console.log(item);
     if (!item) return;
-    this.servicio.eraseEtiqueta(item.id)
+    this.servicio.eraseEtiquetaProducto(item.id)
     .subscribe(
       rs => console.log(rs),
       er => {this.alert.setAlert('danger', '<span class="fa fa-times fa-fw"></span> Error: No se pudo accesar a la base de datos.', item.id );},
       () => {
-        this.alert.setAlert('success', '<span class="fa fa-check fa-fw"></span> Etiqueta borrada', item.id );
+        this.alert.setAlert('success', '<span class="fa fa-check fa-fw"></span> Etiqueta con producto borrada', item.id );
         this.lista = this.lista.filter(h => h !== item)
       }
     )
@@ -145,7 +168,7 @@ export class EtiquetaVistaComponent implements OnInit {
     $('#myModal').modal('hide');
     $('body').removeClass('modal-open');
     $('.modal-backdrop').remove();
-    let link = ['/admin/etiquetas/etiqueta-vista'];
+    let link = ['/admin/etiquetas-producto/etiqueta-producto-vista'];
     this.router.navigate(link);
   }
 

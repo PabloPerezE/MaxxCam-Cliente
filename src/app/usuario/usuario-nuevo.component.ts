@@ -61,7 +61,8 @@ export class UsuarioNuevoComponent implements OnInit {
           this.form.patchValue({
         id: this.flag})}
         else {
-          this.flag = 1;
+          this.form.patchValue({id:this.flag});
+          this.form.patchValue({id:this.flag});
         }
       }
     )
