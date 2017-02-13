@@ -1,12 +1,15 @@
-<li *ngFor="let c of cart">
-  <div class="media">
-    <div class="media-left">
+<li id="cart" *ngFor="let c of cart">
+  <span class="item">
+    <span class="item-left">
       <a href="#">
         <img class="media-object" src="{{ c.imagen }}" alt="..." height="40px" width="40px" style="object-fit:contain">
       </a>
-    </div>
-    <div class="media-body">
-      <h6 class="media-heading">{{c.descripcion}}</h6>    
-    </div>
-</div>
+      <span class="item-info">
+        <span><strong>{{c.descripcion}}</strong></span>
+        <span>$ {{c.precio | number:'.2-2' }}</span>
+      </span>
+    </span>
+</span>
 </li>
+<li class="divider"></li>
+<button (click)="carrito()" type="button" class="btn btn-default btn-block btn-xs btn-success">Ver carrito <span class="fa fa-shopping-cart"></span></button>

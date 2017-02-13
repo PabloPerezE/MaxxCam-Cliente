@@ -48,9 +48,6 @@ export class ProductoComponent implements OnInit {
 
   }
 
-  ver(item: Producto){
-  }
-
   vista() {
     let link = ['/admin/productos/producto-vista'];
     this.router.navigate(link);

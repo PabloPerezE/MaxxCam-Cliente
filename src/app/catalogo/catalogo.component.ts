@@ -93,6 +93,11 @@ decode(){
   return decodeURI(this.param);
 }
 
+infoprod(id){
+  let link = ['/infoprod', id];
+    this.router.navigate(link);
+}
+
   /*addCart(item) {
     let cart = [];
     let local;

@@ -1,10 +1,11 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { CatalogoComponent } from '../catalogo/catalogo.component';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs/Subject';
 @Component({
   selector: 'cart',
   templateUrl: './cart.component.html',
-  styles: []
+  styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
 
@@ -14,27 +15,11 @@ export class CartComponent implements OnInit {
   cart;
 
   constructor(
-    private zone:NgZone,
+    private router: Router
    // private catalogo: CatalogoComponent
   ) { }
 
   ngOnInit() {
-/*
-    this.cartItems.subscribe(
-      data => {this.cart = data; console.log(this.cart)}
-    );
-*/
-    /*this._myService.collection$.subscribe(latestCollection => {
-      this.cartItems2 = latestCollection;
-    });
-
-    if (!window.sessionStorage.getItem('CartItems')){
-    this.carritoLleno = false;}
- 
-    else{
-      this.cartItems = JSON.parse(window.sessionStorage.getItem('CartItems'));
-    }*/
-   // this.cartItems.next(JSON.parse(window.sessionStorage.getItem('CartItems')))
    this.updateCart();
   }
   updateCart() {
@@ -45,9 +30,9 @@ export class CartComponent implements OnInit {
     //this.cart = this.cart.slice();
   }
 
-  addCart(){
-    this.cartItems.next(JSON.parse('dasdas'));
-    this.updateCart();
-  }
+  carrito(){
+  let link = ['/carrito'];
+    this.router.navigate(link);
+}
 
 }

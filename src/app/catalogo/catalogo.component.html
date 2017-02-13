@@ -29,11 +29,11 @@
                 <div *ngFor="let item of lista" class="padding col-sm-3">
                     <div class="thumbnail productbox">
                         <div class="imagen">
-                        <img routerLink="" src="{{ item.imagen }}" alt="http://placehold.it/150x150/e67e22/ffffff&text=HTML5" onerror="this.onerror=null;this.src='http://placehold.it/800x800/e67e22/ffffff&text=HTML5';" class="img-responsive"/>
+                        <img (click)="infoprod(item.id)" src="{{ item.imagen }}" alt="http://placehold.it/150x150?text=No+imagen" onerror="this.onerror=null;this.src='http://placehold.it/800x800?text=No+imagen';" class="img-responsive"/>
                         </div>
                         <div class="caption">
                             <div class="block">
-                            <a routerLink="" class="producttitle">{{ item.descripcion }}</a>
+                            <a (click)="infoprod(item.id)" class="producttitle">{{ item.descripcion }}</a>
                             </div>
                             <div class="productprice"><div class="pricetext">$<span class="pull-right">{{item.precio | number:'.2-2' }}</span></div></div>
                             <button (click)="addCart(item)" type="button" class="btn btn-default btn-block btn-xs btn-warning">Agregar al carrito <span class="fa fa-shopping-cart"></span></button>
