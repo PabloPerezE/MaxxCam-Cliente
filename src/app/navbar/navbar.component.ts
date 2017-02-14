@@ -7,8 +7,6 @@ import { Categoria } from '../categoria/categoria';
 import { Subscription} from 'rxjs/Rx';
 import { CartComponent } from './cart.component';
 
-
- 
 @Component({
   selector: 'navbar',
   templateUrl: './navbar.component.html',
@@ -20,6 +18,7 @@ export class NavbarComponent implements OnInit {
   loginform: FormGroup;
   subscription: Subscription;
   lista: Categoria[];
+  logo = [{foto: ""}];
 
   constructor(
     private router: Router,
@@ -39,6 +38,13 @@ export class NavbarComponent implements OnInit {
       rs => this.lista = rs,
       er => {},
       () => console.log(this.lista)
+    )
+
+    this.categoria.getInicio(1)
+    .subscribe(
+      rs => this.logo = rs,
+      er => {},
+      () => console.log(this.logo)
     )
   }
 

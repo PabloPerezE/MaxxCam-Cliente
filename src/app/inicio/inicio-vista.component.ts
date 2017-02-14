@@ -71,7 +71,6 @@ export class InicioVistaComponent implements OnInit {
         if (this.seleccion.length > 0) {
           this.form.patchValue({
             id: this.seleccion[0].id,
-            nombre: this.seleccion[0].nombre,
             foto: this.seleccion[0].foto,
             estado: this.seleccion[0].estado,
           })
@@ -110,7 +109,6 @@ export class InicioVistaComponent implements OnInit {
   crearControles() {
     this.form = this.fb.group({
       id: ['', Validators.required],
-      nombre: ['', Validators.required],
       foto: ['', Validators.required],
       estado: ['', Validators.required],
     })

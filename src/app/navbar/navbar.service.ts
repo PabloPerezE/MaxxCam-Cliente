@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Categoria } from '../categoria/categoria';
+import { Inicio } from '../inicio/inicio';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
@@ -35,6 +36,14 @@ export class NavbarService {
 
   load() {
     this._collectionObserver.next(this._collection);
+  }
+
+  getInicio(id: number):Observable<Inicio[]> { 
+    let url = `http://localhost:8000/inicio/${id}`;
+    return this.http.get(url)
+    .first()
+    .map(r => r.json())
+    .catch(this.handleError);
   }
 
   getCategorias():Observable<Categoria[]> { 

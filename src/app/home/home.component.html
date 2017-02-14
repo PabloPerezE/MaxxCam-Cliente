@@ -13,10 +13,7 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div *ngFor="let item of carrusel; let isFirst2 = first" [class.active]="isFirst2" class="item">
-      <img (click)="infoprod(item.id)" src="https://static.wixstatic.com/media/1f3c0f_53d999ad4539469ebfd6ac0ef92ffa76.jpg/v1/fill/w_980,h_539,al_c,q_85,usm_0.66_1.00_0.01/1f3c0f_53d999ad4539469ebfd6ac0ef92ffa76.webp" alt="..." class="img-responsive center-block">
-      <div class="carousel-caption">
-        LAS MEJORES CAMARAS DE SEGURIDAD
-      </div>
+      <span><img (click)="catalogo()" src="{{ item.foto }}" alt="..." class="img-responsive center-block" width="2000px"></span>
     </div>
   </div>
 

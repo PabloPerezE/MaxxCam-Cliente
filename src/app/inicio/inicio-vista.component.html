@@ -4,7 +4,6 @@
                 <thead>
             <tr>
                 <th>Id</th>
-                <th>Nombre</th>
                 <th>Foto</th>
                 <th>Acciones</th>
             </tr>
@@ -12,8 +11,7 @@
         <tbody>
             <tr *ngFor="let item of lista; let last = last">
                 <td>{{ item.id }}</td>
-                <td>{{ item.nombre }}</td>
-                <td><img src="{{ item.foto }}" height="100px" width="100px" alt=""></td>
+                <td><img src="{{ item.foto }}" height="100px" width="250px" alt=""></td>
                <td>
                     <div style="width: 110px; text-align: center">
                     <span class="btn btn-defult btn-xs" (click)="editar(item)">
@@ -47,16 +45,10 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="nombre" class="col-sm-2 control-label">Nombre</label>
-            <div class="col-sm-10">
-            <input type="text" class="col-sm-10 form-control" id="nombre" placeholder="Nombre" formControlName="nombre">
-            </div>
-        </div>
-        <div class="form-group">
             <label for="foto" class="col-sm-2 control-label">Foto</label>
             <div class="col-sm-10">
             <input type="file" class="col-sm-10 form-control" id="foto" placeholder="Foto" (change)="previewFile()">
-            <img id="prev" class="" src="{{ form.value.foto }}" height="200px" width="200px" alt="">
+            <img id="prev" class="" src="{{ form.value.foto }}" height="100px" width="250px" alt="">
             </div>
         </div>
         <div class="form-group ">

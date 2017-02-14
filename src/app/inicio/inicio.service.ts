@@ -3,7 +3,6 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import { Inicio } from './inicio';
-import { Producto } from '../producto/producto';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/catch';
@@ -82,13 +81,6 @@ export class InicioService {
   restInicio(id: number){
     let url = `${this.url}/papelera/${id}`;
     return this.http.put(url, {headers: this.headers})
-    .map(r => r.json())
-    .catch(this.handleError);
-  }
-
-  getProductos():Observable<Producto[]> { 
-    let url = `http://localhost:8000/producto`;
-    return this.http.get(url)
     .map(r => r.json())
     .catch(this.handleError);
   }

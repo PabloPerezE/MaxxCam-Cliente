@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Producto } from '../catalogo/producto';
+import { Inicio } from '../inicio/inicio';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
@@ -17,6 +18,13 @@ export class HomeService {
 
   getProductos(categoria):Observable<Producto[]> { 
     let url = `${this.url}/${categoria}`;
+    return this.http.get(url)
+    .map(r => r.json())
+    .catch(this.handleError);
+  }
+
+  getInicioes():Observable<Inicio[]> { 
+    let url = `http://localhost:8000/inicio`;
     return this.http.get(url)
     .map(r => r.json())
     .catch(this.handleError);

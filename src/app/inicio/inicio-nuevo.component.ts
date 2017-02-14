@@ -65,7 +65,6 @@ export class InicioNuevoComponent implements OnInit {
   crearControles() {
     this.form = this.fb.group({
       id: ['', Validators.required],
-      nombre: ['', Validators.required],
       foto: ['', Validators.required],
       estado: ['1', Validators.required],
     })

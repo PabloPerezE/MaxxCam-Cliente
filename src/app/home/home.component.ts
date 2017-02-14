@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
 
   param = "any";
   lista;
+  inicio;
   carrusel = [];
   cartas = [[],[],[],[]];
 
@@ -28,15 +29,22 @@ export class HomeComponent implements OnInit {
       rs => this.lista = rs,
       er => {this.alert.setAlert('danger', '<span class="fa fa-times fa-fw"></span> No disponible por el momento.','ewwefwewer');},
       () => {console.log(this.lista);
-      this.cargarCarrucel();
       this.cargarCartas(); }
+    )
+
+    this.servicio.getInicioes()
+    .subscribe(
+      rs => this.inicio = rs,
+      er => {this.alert.setAlert('danger', '<span class="fa fa-times fa-fw"></span> No disponible por el momento.','ewwefwewer');},
+      () => {console.log(this.inicio);
+      this.cargarCarrucel();}
     )
 
   }
 
   cargarCarrucel() {
-    for (let i=0;i<3;i++){
-      this.carrusel.push(this.lista[Math.floor((Math.random() * this.lista.length))])
+    for (let i=1;i<this.inicio.length;i++){
+      this.carrusel.push(this.inicio[i]);
     }
   }
 
@@ -51,6 +59,11 @@ export class HomeComponent implements OnInit {
 
   infoprod(id){
   let link = ['/infoprod', id];
+    this.router.navigate(link);
+}
+
+catalogo(){
+  let link = ['/catalogo'];
     this.router.navigate(link);
 }
 
