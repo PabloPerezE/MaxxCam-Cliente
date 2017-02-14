@@ -42,6 +42,11 @@ import { ImagenNuevoComponent } from './imagen/imagen-nuevo.component';
 import { ImagenVistaComponent } from './imagen/imagen-vista.component';
 import { ImagenEliminarComponent } from './imagen/imagen-eliminar.component';
 
+import { InicioComponent } from './inicio/inicio.component';
+import { InicioNuevoComponent } from './inicio/inicio-nuevo.component';
+import { InicioVistaComponent } from './inicio/inicio-vista.component';
+import { InicioEliminarComponent } from './inicio/inicio-eliminar.component';
+
 import { OrdenCompraComponent } from './ordenCompra/ordenCompra.component';
 import { OrdenCompraNuevoComponent } from './ordenCompra/ordenCompra-nuevo.component';
 import { OrdenCompraVistaComponent } from './ordenCompra/ordenCompra-vista.component';
@@ -107,6 +112,13 @@ const routes: Routes = [
       { path: 'imagen-vista/:id', component: ImagenVistaComponent},
       { path: 'imagen-papelera', component: ImagenEliminarComponent},
       { path: 'imagen-nuevo', component: ImagenNuevoComponent},
+    ]},
+    { path: 'inicios', component: InicioComponent, children: [
+      { path: ''},
+      { path: 'inicio-vista', component: InicioVistaComponent},
+      { path: 'inicio-vista/:id', component: InicioVistaComponent},
+      { path: 'inicio-papelera', component: InicioEliminarComponent},
+      { path: 'inicio-nuevo', component: InicioNuevoComponent},
     ]},
     { path: 'ordenesCompra', component: OrdenCompraComponent, children: [
       { path: ''},

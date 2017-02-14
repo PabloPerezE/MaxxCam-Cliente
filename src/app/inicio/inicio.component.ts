@@ -1,43 +1,43 @@
 import { Component, OnInit } from '@angular/core';
-import { TipoUsuarioService } from './tipoUsuario.service';
-import { TipoUsuario } from './tipoUsuario';
+import { InicioService } from './inicio.service';
+import { Inicio } from './inicio';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 declare var $: any;
 
 @Component({
-  selector: 'tipoUsuario',
-  templateUrl: './tipoUsuario.component.html',
+  selector: 'inicio',
+  templateUrl: './inicio.component.html',
   styles: [],
-  providers: [TipoUsuarioService],
+  providers: [InicioService],
 
 })
 
-export class TipoUsuarioComponent implements OnInit {
+export class InicioComponent implements OnInit {
 
-  lista: TipoUsuario[];
+  lista: Inicio[];
 
   constructor(
     private router: Router,
-    private servicio: TipoUsuarioService,
+    private servicio: InicioService,
   ) {  }
 
   ngOnInit() {
 
 
-    document.getElementById("menu-tipos").className += " active";
+    document.getElementById("menu-inicios").className += " active";
     document.getElementById("menu-inicio").className = document.getElementById("menu-inicio").className.replace( /(?:^|\s)active(?!\S)/g , '' );
     document.getElementById("menu-usuarios").className = document.getElementById("menu-usuarios").className.replace( /(?:^|\s)active(?!\S)/g , '' );
-    document.getElementById("menu-productos").className = document.getElementById("menu-productos").className.replace( /(?:^|\s)active(?!\S)/g , '' );
+    document.getElementById("menu-tipos").className = document.getElementById("menu-tipos").className.replace( /(?:^|\s)active(?!\S)/g , '' );
     document.getElementById("menu-categorias").className = document.getElementById("menu-categorias").className.replace( /(?:^|\s)active(?!\S)/g , '' );
     document.getElementById("menu-etiquetas").className = document.getElementById("menu-etiquetas").className.replace( /(?:^|\s)active(?!\S)/g , '' );
-    document.getElementById("menu-imagenes").className = document.getElementById("menu-imagenes").className.replace( /(?:^|\s)active(?!\S)/g , '' );
     document.getElementById("menu-etiquetasProducto").className = document.getElementById("menu-etiquetasProducto").className.replace( /(?:^|\s)active(?!\S)/g , '' );
-    document.getElementById("menu-inicios").className = document.getElementById("menu-inicios").className.replace( /(?:^|\s)active(?!\S)/g , '' );
+    document.getElementById("menu-productos").className = document.getElementById("menu-productos").className.replace( /(?:^|\s)active(?!\S)/g , '' );
     document.getElementById("menu-orden").className = document.getElementById("menu-orden").className.replace( /(?:^|\s)active(?!\S)/g , '' );
+    document.getElementById("menu-imagenes").className = document.getElementById("menu-imagenes").className.replace( /(?:^|\s)active(?!\S)/g , '' );
     
-    this.servicio.getTipoUsuarios()
+    this.servicio.getInicioes()
     .subscribe(
       rs => this.lista = rs,
       er => console.log(er),
@@ -49,32 +49,32 @@ export class TipoUsuarioComponent implements OnInit {
 
   }
 
-  ver(item: TipoUsuario){
+  ver(item: Inicio){
   }
 
   vista() {
-    let link = ['/admin/tipoUsuarios/tipoUsuario-vista'];
+    let link = ['/admin/inicios/inicio-vista'];
     this.router.navigate(link);
   }
 
   papelera() {
-    let link = ['/admin/tipoUsuarios/tipoUsuario-papelera'];
+    let link = ['/admin/inicios/inicio-papelera'];
     this.router.navigate(link);
   }
 
   nuevo() {
-    let link = ['/admin/tipoUsuarios/tipoUsuario-nuevo'];
+    let link = ['/admin/inicios/inicio-nuevo'];
     this.router.navigate(link);
   }
 
-  editar(item: TipoUsuario){
-    let link = ['/admin/tipoUsuario', item.id];
+  editar(item: Inicio){
+    let link = ['/admin/inicios', item.id];
     this.router.navigate(link);
   }
 
-  borrar(item: TipoUsuario){
+  borrar(item: Inicio){
     if (!item) return;
-    this.servicio.eraseTipoUsuario(item.id)
+    this.servicio.eraseInicio(item.id)
     .subscribe(
       rs => console.log(rs),
       er => console.log(er),

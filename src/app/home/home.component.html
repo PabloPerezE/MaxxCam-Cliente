@@ -12,22 +12,10 @@
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="http://placehold.it/640x360" alt="..." class="img-responsive center-block">
+    <div *ngFor="let item of carrusel; let isFirst2 = first" [class.active]="isFirst2" class="item">
+      <img (click)="infoprod(item.id)" src="https://static.wixstatic.com/media/1f3c0f_53d999ad4539469ebfd6ac0ef92ffa76.jpg/v1/fill/w_980,h_539,al_c,q_85,usm_0.66_1.00_0.01/1f3c0f_53d999ad4539469ebfd6ac0ef92ffa76.webp" alt="..." class="img-responsive center-block">
       <div class="carousel-caption">
         LAS MEJORES CAMARAS DE SEGURIDAD
-      </div>
-    </div>
-    <div class="item">
-      <img src="http://placehold.it/640x360" alt="..." class="img-responsive center-block">
-      <div class="carousel-caption">
-        10 AÑOS DE EXPERIENCIA EN EL MERCADO
-      </div>
-    </div>
-    <div class="item">
-      <img src="http://placehold.it/640x360" alt="..." class="img-responsive center-block">
-      <div class="carousel-caption">
-        CALIDAD EN PRODUCTOS Y SERVICIOS
       </div>
     </div>
   </div>
@@ -50,162 +38,24 @@
         
     <div class="carousel slide" id="myCarousel">
         <div class="carousel-inner">
-            <div class="item active">
+            <div *ngFor="let pro of cartas;let i = index; let isFirst2 = first" [class.active]="isFirst2"  class="item">
                     <ul class="thumbnails">
-                        <li class="col-sm-3">
+                        <li *ngFor="let pro2 of cartas[i]" class="col-sm-3">
     						<div class="fff">
-								<div class="thumbnail">
-									<a href="#"><img src="http://placehold.it/500x500" alt=""></a>
+								<div class="thumbnail productbox">
+									<div (click)="infoprod(pro2.id)" class="imagen"><img src="{{ pro2.imagen }}" alt=""></div>
 								<div class="caption">
-									<h4>Praesent commodo</h4>
-									<p>Nullam Condimentum Nibh Etiam Sem</p>
-									<a class="btn btn-mini" href="#">» Read More1</a>
-								</div>
-								</div>
-                            </div>
-                        </li>
-                        <li class="col-sm-3">
-							<div class="fff">
-								<div class="thumbnail">
-									<a href="#"><img src="http://placehold.it/500x500" alt=""></a>
-								<div class="caption">
-									<h4>Praesent commodo</h4>
-									<p>Nullam Condimentum Nibh Etiam Sem</p>
-									<a class="btn btn-mini" href="#">» Read More1</a>
-								</div>
-								</div>
-                            </div>
-                        </li>
-                        <li class="col-sm-3">
-							<div class="fff">
-								<div class="thumbnail">
-									<a href="#"><img src="http://placehold.it/500x500" alt=""></a>
-								<div class="caption">
-									<h4>Praesent commodo</h4>
-									<p>Nullam Condimentum Nibh Etiam Sem</p>
-									<a class="btn btn-mini" href="#">» Read More1</a>
-								</div>
-								</div>
-                            </div>
-                        </li>
-                        <li class="col-sm-3">
-							<div class="fff">
-								<div class="thumbnail">
-									<a href="#"><img src="http://placehold.it/500x500" alt=""></a>
-								<div class="caption">
-									<h4>Praesent commodo</h4>
-									<p>Nullam Condimentum Nibh Etiam Sem</p>
-									<a class="btn btn-mini" href="#">» Read More1</a>
+									<div class="block">
+									<a (click)="infoprod(prod2.id)" class="producttitle">{{ pro2.descripcion }}</a>
+									</div>
+									<div class="productprice"><div class="pricetext">$<span class="pull-right">{{ pro2.precio | number:'.2-2' }}</span></div></div>
+									<button (click)="addCart(pro2)" type="button" class="btn btn-default btn-block btn-xs btn-warning">Agregar al carrito <span class="fa fa-shopping-cart"></span></button>
 								</div>
 								</div>
                             </div>
                         </li>
                     </ul>
               </div><!-- /Slide1 --> 
-            <div class="item">
-                    <ul class="thumbnails">
-                        <li class="col-sm-3">
-							<div class="fff">
-								<div class="thumbnail">
-									<a href="#"><img src="http://placehold.it/500x500" alt=""></a>
-								<div class="caption">
-									<h4>Praesent commodo</h4>
-									<p>Nullam Condimentum Nibh Etiam Sem</p>
-									<a class="btn btn-mini" href="#">» Read More</a>
-								</div>
-								</div>
-                            </div>
-                        </li>
-                        <li class="col-sm-3">
-							<div class="fff">
-								<div class="thumbnail">
-									<a href="#"><img src="http://placehold.it/500x500" alt=""></a>
-								<div class="caption">
-									<h4>Praesent commodo</h4>
-									<p>Nullam Condimentum Nibh Etiam Sem</p>
-									<a class="btn btn-mini" href="#">» Read More</a>
-								</div>
-								</div>
-                            </div>
-                        </li>
-                        <li class="col-sm-3">
-							<div class="fff">
-								<div class="thumbnail">
-									<a href="#"><img src="http://placehold.it/500x500" alt=""></a>
-								<div class="caption">
-									<h4>Praesent commodo</h4>
-									<p>Nullam Condimentum Nibh Etiam Sem</p>
-									<a class="btn btn-mini" href="#">» Read More</a>
-								</div>
-								</div>
-                            </div>
-                        </li>
-                        <li class="col-sm-3">
-							<div class="fff">
-								<div class="thumbnail">
-									<a href="#"><img src="http://placehold.it/500x500" alt=""></a>
-								<div class="caption">
-									<h4>Praesent commodo</h4>
-									<p>Nullam Condimentum Nibh Etiam Sem</p>
-									<a class="btn btn-mini" href="#">» Read More</a>
-								</div>
-								</div>
-                            </div>
-                        </li>
-                    </ul>
-              </div><!-- /Slide2 --> 
-            <div class="item">
-                    <ul class="thumbnails">
-                        <li class="col-sm-3">	
-							<div class="fff">
-								<div class="thumbnail">
-									<a href="#"><img src="http://placehold.it/500x500" alt=""></a>
-								<div class="caption">
-									<h4>Praesent commodo</h4>
-									<p>Nullam Condimentum Nibh Etiam Sem</p>
-									<a class="btn btn-mini" href="#">» Read More</a>
-								</div>
-								</div>
-                            </div>
-                        </li>
-                        <li class="col-sm-3">
-							<div class="fff">
-								<div class="thumbnail">
-									<a href="#"><img src="http://placehold.it/500x500" alt=""></a>
-								<div class="caption">
-									<h4>Praesent commodo</h4>
-									<p>Nullam Condimentum Nibh Etiam Sem</p>
-									<a class="btn btn-mini" href="#">» Read More</a>
-								</div>
-								</div>
-                            </div>
-                        </li>
-                        <li class="col-sm-3">
-							<div class="fff">
-								<div class="thumbnail">
-									<a href="#"><img src="http://placehold.it/500x500" alt=""></a>
-								<div class="caption">
-									<h4>Praesent commodo</h4>
-									<p>Nullam Condimentum Nibh Etiam Sem</p>
-									<a class="btn btn-mini" href="#">» Read More</a>
-								</div>
-								</div>
-                            </div>
-                        </li>
-                        <li class="col-sm-3">
-							<div class="fff">
-								<div class="thumbnail">
-									<a href="#"><img src="http://placehold.it/500x500" alt=""></a>
-								<div class="caption">
-									<h4>Praesent commodo</h4>
-									<p>Nullam Condimentum Nibh Etiam Sem</p>
-									<a class="btn btn-mini" href="#">» Read More</a>
-								</div>
-								</div>
-                            </div>
-                        </li>
-                    </ul>
-              </div><!-- /Slide3 --> 
         </div>
         
        
@@ -217,7 +67,7 @@
 		</nav>
 	   <!-- /.control-box -->   
                               
-    </div><!-- /#myCarousel -->
+    </div><!-- /#myCarousel --><!-- /#myCarousel -->
         
 </div><!-- /.col-xs-12 -->          
 </div><!-- /.container -->

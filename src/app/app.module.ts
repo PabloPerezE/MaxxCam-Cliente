@@ -48,6 +48,11 @@ import { ImagenNuevoComponent } from './imagen/imagen-nuevo.component';
 import { ImagenVistaComponent } from './imagen/imagen-vista.component';
 import { ImagenEliminarComponent } from './imagen/imagen-eliminar.component';
 
+import { InicioComponent } from './inicio/inicio.component';
+import { InicioNuevoComponent } from './inicio/inicio-nuevo.component';
+import { InicioVistaComponent } from './inicio/inicio-vista.component';
+import { InicioEliminarComponent } from './inicio/inicio-eliminar.component';
+
 import { OrdenCompraComponent } from './ordenCompra/ordenCompra.component';
 import { OrdenCompraService } from './ordenCompra/ordenCompra.service';
 import { OrdenCompraNuevoComponent } from './ordenCompra/ordenCompra-nuevo.component';
@@ -73,6 +78,7 @@ import { CarritoComponent } from './carrito/carrito.component';
     CategoriaComponent, CategoriaNuevoComponent, CategoriaVistaComponent, CategoriaEliminarComponent,
     EtiquetaComponent, EtiquetaNuevoComponent, EtiquetaVistaComponent, EtiquetaEliminarComponent,
     ImagenComponent, ImagenNuevoComponent, ImagenVistaComponent, ImagenEliminarComponent,
+    InicioComponent, InicioNuevoComponent, InicioVistaComponent, InicioEliminarComponent,
     OrdenCompraComponent, OrdenCompraNuevoComponent, OrdenCompraVistaComponent, OrdenCompraEliminarComponent,
     AlertComponent,
     CartComponent,
