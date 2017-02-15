@@ -1,5 +1,6 @@
 import { Injectable, Directive, Output, EventEmitter } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Usuario } from '../usuario/usuario';
 
 import { Observable } from 'rxjs/Observable';
 import { OrdenCompra } from './ordenCompra';
@@ -81,6 +82,13 @@ export class OrdenCompraService {
   restOrdenCompra(id: number){
     let url = `${this.url}/papelera/${id}`;
     return this.http.put(url, {headers: this.headers})
+    .map(r => r.json())
+    .catch(this.handleError);
+  }
+
+  getUsuarios():Observable<Usuario[]> { 
+    let url = 'http://localhost:8000/usuario';
+    return this.http.get(url)
     .map(r => r.json())
     .catch(this.handleError);
   }

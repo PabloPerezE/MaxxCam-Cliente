@@ -27,8 +27,6 @@ export class OrdenCompraEliminarComponent implements OnInit {
 
     document.getElementById("eliminar").className += " active";
     document.getElementById("vista").className = document.getElementById("vista").className.replace( /(?:^|\s)active(?!\S)/g , '' );
-    document.getElementById("nuevo").className = document.getElementById("nuevo").className.replace( /(?:^|\s)active(?!\S)/g , '' );
-
     this.servicio.getPapeleraOrdenCompra()
     .subscribe(
       rs => this.lista = rs,

@@ -4,13 +4,22 @@ import { OrdenCompra } from './ordenCompra';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertComponent} from '../admin/alert.component';
+import { Usuario } from '../usuario/usuario';
 
 declare var $: any;
 
 @Component({
   selector: 'ordenCompra-vista',
   templateUrl: './ordenCompra-vista.component.html',
-  styles: [],
+  styles: [`
+  .btn-default.btn-on.active {
+    background-color: #1a242f;
+    border-color: #1a242f;
+  }
+  label.btn > input[type='radio']{
+    display: none;
+  }
+  `],
   providers: [OrdenCompraService, AlertComponent]
 })
 export class OrdenCompraVistaComponent implements OnInit {
@@ -19,7 +28,8 @@ export class OrdenCompraVistaComponent implements OnInit {
 
   form: FormGroup;
   lista: OrdenCompra[];
-  seleccion: OrdenCompra[];
+  seleccion: OrdenCompra[];  
+  usuarios = [];
 
   constructor(
     private alert: AlertComponent,
@@ -32,7 +42,6 @@ export class OrdenCompraVistaComponent implements OnInit {
   ngOnInit() {
 
     document.getElementById("vista").className += " active";
-    document.getElementById("nuevo").className = document.getElementById("nuevo").className.replace( /(?:^|\s)active(?!\S)/g , '' );
     document.getElementById("eliminar").className = document.getElementById("eliminar").className.replace( /(?:^|\s)active(?!\S)/g , '' );
 
     //this.alert.emit({value: 'Mensaje de alerta'});
@@ -42,6 +51,13 @@ export class OrdenCompraVistaComponent implements OnInit {
       rs => this.lista = rs,
       er => {this.alert.setAlert('danger', '<span class="fa fa-times fa-fw"></span> Error: No se pudo accesar a la base de datos.','ewwefwewer');},
       () => console.log(this.lista)
+    )
+
+    this.servicio.getUsuarios()
+    .subscribe(
+      rs => this.usuarios = rs,
+      er => {this.alert.setAlert('danger', '<span class="fa fa-times fa-fw"></span> Error: No se pudo accesar a la base de datos.','ewwefwewer');},
+      () => {console.log(this.usuarios)}
     )
 
     let id = this.route.snapshot.params['id'];
@@ -56,7 +72,8 @@ export class OrdenCompraVistaComponent implements OnInit {
         if (this.seleccion.length > 0) {
           this.form.patchValue({
             id: this.seleccion[0].id,
-            descripcion: this.seleccion[0].descripcion,
+            fecha: this.seleccion[0].fecha,
+            cliente: this.seleccion[0].Usuario_id,
             estado: this.seleccion[0].estado,
           })
         }
@@ -93,8 +110,9 @@ export class OrdenCompraVistaComponent implements OnInit {
   crearControles() {
     this.form = this.fb.group({
       id: ['', Validators.required],
-      descripcion: ['', Validators.required],
-      estado: ['', Validators.required],
+      fecha: ['', Validators.required],
+      cliente: ['', Validators.required],
+      estado: ['1', Validators.required],
     })
   }
 
@@ -117,8 +135,16 @@ export class OrdenCompraVistaComponent implements OnInit {
   }
 
   regresar() {
+    $('#myModal').modal('hide');
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
     let link = ['/admin/ordenesCompra/ordenCompra-vista'];
     this.router.navigate(link);
+  }
+
+  toggle(a,b) {
+    document.getElementById(a).className += " active";
+    document.getElementById(b).className = document.getElementById(b).className.replace( /(?:^|\s)active(?!\S)/g , '' );
   }
 
 

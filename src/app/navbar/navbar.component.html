@@ -29,7 +29,7 @@
             </cart>
           </ul>
         </li>
-        <li *ngIf="logged()">
+        <li *ngIf="isAdmin()">
           <a routerLink="admin"><span class="fa fa-cogs fa-fw" ></span> Panel de control</a>
         </li>
         <li *ngIf="logged()" class="dropdown">

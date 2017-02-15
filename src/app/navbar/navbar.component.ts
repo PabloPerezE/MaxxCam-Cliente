@@ -80,6 +80,22 @@ export class NavbarComponent implements OnInit {
         return false;
     }
 
+    isAdmin() {
+      if (window.sessionStorage.getItem('auth_key')){
+            let local = this.parseJwt(window.sessionStorage.getItem('auth_key'));
+            console.log(local);
+            if (local.TipoUsuario_id == 1)
+            return true;
+        }
+        return false;
+    }
+
+    parseJwt(token){
+        let base64Url = token.split('.')[1];
+        let base64 = base64Url.replace('-','+').replace('_','/');
+        return JSON.parse(window.atob(base64));
+    }
+
     cat(categoria?) {
       if (categoria){
         let link = ['/catalogo', encodeURI(categoria)];
