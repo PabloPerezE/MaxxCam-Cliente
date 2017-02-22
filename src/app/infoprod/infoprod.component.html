@@ -15,7 +15,7 @@
 						<div class="rating">
 							<span class="review-no"><strong>Categoría: </strong> {{ producto[0].categoria }}</span>
 						</div>
-						<p class="product-description">{{ producto[0].detalle }} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore esse et doloribus tempore autem. Perspiciatis consectetur eveniet molestiae omnis, voluptatem dolores error aliquid aut minus. Adipisci unde numquam fugiat necessitatibus.</p>
+						<p class="product-description">{{ producto[0].detalle }}</p>
 						<h4 class="price">precio actual: <span> $ {{ producto[0].precio | number:'.2-2' }}</span></h4>
 						<div class="action">
 							<button (click)="addCart(producto[0])" class="add-to-cart btn btn-warning" type="button">Agregar al carrito</button>

@@ -34,7 +34,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="regresar()"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Órden de Compra</h4>
       </div>
                 <form novalidate [formGroup]="form" class="form-horizontal">
       <div class="modal-body">
@@ -74,6 +74,22 @@
             </div>
             </div>
         </div>
+        <table class="table table-striped bordered" id="tblGrid">
+            <thead id="tblHead">
+              <tr>
+                <th>Id producto</th>
+                <th>Producto</th>
+                <th class="text-right">Precio</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let it of detalle">
+                <td>{{ it.Producto_id }}</td>
+                <td>{{ it.descripcion }}</td>
+                <td class="text-right">${{ it.precio | number:'.2-2'}}</td>
+              </tr>
+            </tbody>
+          </table>
           </div>
         </div>
         <div class="modal-footer">

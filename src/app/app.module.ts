@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { CatalogoComponent } from './catalogo/catalogo.component';
+import { TagComponent } from './tags/tags.component';
 import { AdminComponent } from './admin/admin.component';
 
 import { UsuarioComponent } from './usuario/usuario.component';
@@ -68,10 +69,13 @@ import { EtiquetaProductoVistaComponent } from './etiqueta-producto/etiqueta-pro
 import { AdminhomeComponent } from './admin/adminhome.component';
 import { InfoprodComponent } from './infoprod/infoprod.component';
 import { CarritoComponent } from './carrito/carrito.component';
+import { LoginComponent } from './login/login.component';
+import { ForgotComponent } from './forgot/forgot.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
-    AppComponent, NavbarComponent, HomeComponent, CatalogoComponent, AdminComponent,
+    AppComponent, NavbarComponent, HomeComponent, CatalogoComponent, TagComponent, AdminComponent,
     UsuarioComponent, UsuarioNuevoComponent, UsuarioVistaComponent, UsuarioEliminarComponent,
     TipoUsuarioComponent, TipoUsuarioNuevoComponent, TipoUsuarioVistaComponent, TipoUsuarioEliminarComponent,
     ProductoComponent, ProductoNuevoComponent, ProductoVistaComponent, ProductoEliminarComponent,
@@ -89,6 +93,9 @@ import { CarritoComponent } from './carrito/carrito.component';
     AdminhomeComponent,
     InfoprodComponent,
     CarritoComponent,
+    LoginComponent,
+    ForgotComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

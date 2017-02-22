@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="panel panel-primary text-left ppequeno">
+              <div class="panel-heading">
+                <h3 class="panel-title">Creación de usuario</h3>
+              </div>
+              <div  class="panel-body">
+                <form role="form" novalidate [formGroup]="form">
+                  <div class="form-group">
+            <label for="correo" class=" control-label">Correo</label>
+            <div class="">
+            <input type="text" class="form-control" id="correo" placeholder="Correo" formControlName="correo">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="contrasena" class=" control-label">Contraseña</label>
+            <div class="">
+            <input type="text" class=" form-control" id="contrasena" placeholder="Contraseña" formControlName="contrasena">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="nombre" class=" control-label">Nombres</label>
+            <div class="">
+            <input type="text" class=" form-control" id="nombre" placeholder="Nombres" formControlName="nombre">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="apellido" class=" control-label">Apellidos</label>
+            <div class="">
+            <input type="text" class=" form-control" id="apellido" placeholder="Apellidos" formControlName="apellido">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="direccion" class=" control-label">Dirección</label>
+            <div class="">
+            <input type="text" class=" form-control" id="direccion" placeholder="Dirección" formControlName="direccion">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="telefono" class=" control-label">Teléfono</label>
+            <div class="">
+            <input type="text" class="form-control" id="telefono" placeholder="Teléfono" formControlName="telefono">
+            </div>
+        </div>
+                    <div class="g-recaptcha form-group"></div>
+                  <button (click)="guardarUsuario()" type="submit" class="btn btn-primary btn-block">Crear cuenta</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

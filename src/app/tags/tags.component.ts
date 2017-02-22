@@ -1,7 +1,7 @@
 import { Component, OnInit,OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertComponent} from '../admin/alert.component';
-import { CatalogoService } from './catalogo.service';
+import { TagService } from './tags.service';
 import { Subscription} from 'rxjs/Rx';
 import { Producto } from './producto';
 import { NavbarService } from '../navbar/navbar.service';
@@ -9,29 +9,29 @@ import { Observable } from 'rxjs/Observable';
 import { CartComponent } from '../navbar/cart.component';
 
 @Component({
-  selector: 'catalogo',
-  templateUrl: './catalogo.component.html',
-  styleUrls: ['./catalogo.component.css'],
-  providers: [CatalogoService, AlertComponent, NavbarService,CartComponent]
+  selector: 'tags',
+  templateUrl: './tags.component.html',
+  styleUrls: ['./tags.component.css'],
+  providers: [TagService, AlertComponent, NavbarService,CartComponent]
 })
-export class CatalogoComponent implements OnInit, OnDestroy {
+export class TagComponent implements OnInit, OnDestroy {
 
   lista: any;
   subscription: Subscription;
   param: string;
-  categorias;
   etiquetas;
+  categorias;
 
   constructor(
     private alert: AlertComponent,
     private route: ActivatedRoute,
     private router: Router,
-    private servicio: CatalogoService,
+    private servicio: TagService,
     private _myService: NavbarService,
     private cartC: CartComponent
   ) { 
     this.subscription = route.params.subscribe(
-      (params: any) => {this.param = params['categoria'];
+      (params: any) => {this.param = params['etiqueta'];
       //console.log(this.param);
       if (!this.param) this.param = 'any';
 
@@ -81,7 +81,7 @@ export class CatalogoComponent implements OnInit, OnDestroy {
       }
   }
 
-    tag1(etiqueta?) {
+  tag1(etiqueta?) {
       if (etiqueta){
         let link = ['/tags', encodeURI(etiqueta)];
         this.router.navigate(link);
@@ -116,8 +116,8 @@ infoprod(id){
     this.router.navigate(link);
 }
 
-catalogo(){
-  let link = ['/catalogo'];
+tags(){
+  let link = ['/tags'];
     this.router.navigate(link);
 }
 

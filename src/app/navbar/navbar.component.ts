@@ -83,7 +83,6 @@ export class NavbarComponent implements OnInit {
     isAdmin() {
       if (window.sessionStorage.getItem('auth_key')){
             let local = this.parseJwt(window.sessionStorage.getItem('auth_key'));
-            console.log(local);
             if (local.TipoUsuario_id == 1)
             return true;
         }

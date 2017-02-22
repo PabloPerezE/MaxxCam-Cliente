@@ -5,7 +5,8 @@
         <img class="media-object" src="{{ c.imagen }}" alt="..." height="40px" width="40px" style="object-fit:contain">
       </a>
       <span class="item-info">
-        <span><strong>{{c.descripcion}}</strong></span>
+        <div class="block2"><a class="producttitle">{{c.descripcion}}</a></div>
+
         <span>$ {{c.precio | number:'.2-2' }}</span>
       </span>
     </span>

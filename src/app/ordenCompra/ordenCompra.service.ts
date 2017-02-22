@@ -33,6 +33,13 @@ export class OrdenCompraService {
     .map(r => r.json())
     .catch(this.handleError);
   }
+  
+  getDetalle(id: number) { 
+    let url = `http://localhost:8000/detalle/${id}`;
+    return this.http.get(url)
+    .map(r => r.json())
+    .catch(this.handleError);
+  }
 
   getOrdenCompra(id: number):Observable<OrdenCompra[]> { 
     let url = `${this.url}/${id}`;

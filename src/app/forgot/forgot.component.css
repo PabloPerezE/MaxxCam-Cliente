@@ -1,0 +1,73 @@
+.pgrande {
+    width: 400px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.pmediano {
+    width: 400px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.ppequeno {
+    width: 400px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.navbar {
+    margin-bottom: 
+    0px;
+    border-radius: 0;
+}
+
+.jumbotron1 {
+    margin-bottom: 0;
+    height: 120px;
+    background: teal;
+    border-radius: 0;
+}
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    width: 70%;
+    margin: auto;
+}
+                
+.logo {
+    padding-top: 50px;
+    padding-left: 30px;
+}
+.maxx {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    color: black;
+}
+.cam {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    color: goldenrod;
+}
+
+.linea {
+    text-align: center;
+    margin: auto;
+}	
+
+.card {
+    height: 211.75px;
+    overflow: hidden;
+}
+
+
+@media (min-width: 992px) {
+    .col-md-border:not(:last-child) {
+        border-right: 1px solid #d7d7d7;
+    }
+    .col-md-border + .col-md-border {
+        border-left: 1px solid #d7d7d7;
+        margin-left: -1px;
+    }
+}
+

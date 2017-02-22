@@ -30,6 +30,7 @@ export class OrdenCompraVistaComponent implements OnInit {
   lista: OrdenCompra[];
   seleccion: OrdenCompra[];  
   usuarios = [];
+  detalle;
 
   constructor(
     private alert: AlertComponent,
@@ -78,6 +79,13 @@ export class OrdenCompraVistaComponent implements OnInit {
           })
         }
       } 
+    )
+
+    this.servicio.getDetalle(id)
+    .subscribe(
+      rs => this.detalle = rs,
+      er => console.log(er),
+      () => {} 
     )
 
     console.log(id);

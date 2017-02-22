@@ -51,6 +51,7 @@ export class TipoUsuarioService {
   addTipoUsuario(tipoUsuario: TipoUsuario){
     let url = `${this.url}`;
     let iJson = JSON.stringify(tipoUsuario);
+    console.log(tipoUsuario);
     return this.http.post(url, iJson, {headers: this.headers})
     .map(r => r.json())
     .catch(this.handleError);

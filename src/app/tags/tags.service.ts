@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Producto } from './producto';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Categoria } from '../categoria/categoria';
 import { Etiqueta } from '../etiqueta/etiqueta';
+import { Categoria } from '../categoria/categoria';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -10,15 +10,15 @@ import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
-export class CatalogoService {
+export class TagService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private url = 'http://localhost:8000/catalogo';
+  private url = 'http://localhost:8000/tags';
 
   constructor(private http: Http) { }
 
-  getProductos(categoria):Observable<Producto[]> { 
-    let url = `${this.url}/${categoria}`;
+  getProductos(etiqueta):Observable<Producto[]> { 
+    let url = `${this.url}/${etiqueta}`;
     return this.http.get(url)
     .map(r => r.json())
     .catch(this.handleError);

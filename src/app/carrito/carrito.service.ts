@@ -23,6 +23,36 @@ export class CarritoService {
     .catch(this.handleError);
   }
 
+  addItem(item){
+    let url = `http://localhost:8000/detalle`;
+    let iJson = JSON.stringify(item);
+    return this.http.post(url, iJson, {headers: this.headers})
+    .map(r => r.json())
+    .catch(this.handleError);
+  }
+
+  getListaId():Observable<any> { 
+    let url = `http://localhost:8000/ordenCompraId`;
+    return this.http.get(url)
+    .map(r => r.json())
+    .catch(this.handleError);
+  }
+
+  getListaItemsId():Observable<any> { 
+    let url = `http://localhost:8000/detalleId`;
+    return this.http.get(url)
+    .map(r => r.json())
+    .catch(this.handleError);
+  }
+
+  enviarMail(mail){
+    let url = `http://localhost:8000/enviarmail`;
+    let iJson = JSON.stringify(mail);
+    return this.http.post(url, iJson, {headers: this.headers})
+    .map(r => r.json())
+    .catch(this.handleError);
+  }
+
   private handleError(error: Response | any){
     let errMsg: string;
     if (error instanceof Response) {

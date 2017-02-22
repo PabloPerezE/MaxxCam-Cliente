@@ -54,13 +54,22 @@ import { OrdenCompraEliminarComponent } from './ordenCompra/ordenCompra-eliminar
 
 import { InfoprodComponent } from './infoprod/infoprod.component';
 import { CarritoComponent } from './carrito/carrito.component';
+import { TagComponent } from './tags/tags.component';
+import { LoginComponent } from './login/login.component';
+import { ForgotComponent } from './forgot/forgot.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, data: { title: 'Maxxcam'}},
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'catalogo', component: CatalogoComponent },
+  { path: 'tags', component: TagComponent },
   { path: 'carrito', component: CarritoComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'forgot', component: ForgotComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'catalogo/:categoria', component: CatalogoComponent },
+  { path: 'tags/:etiqueta', component: TagComponent },
   { path: 'infoprod/:id', component: InfoprodComponent },
   { path: 'admin', component: AdminComponent, canActivate: [AuthManager] ,children: [
     { path: ''},
