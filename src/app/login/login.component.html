@@ -7,15 +7,15 @@
                 <h3 class="panel-title">Inicio de sesión</h3>
               </div>
               <div  class="panel-body">
-                <form role="form">
-                  <div class="form-group has-feedback">
-                    <label class="control-label" for="exampleInputEmail1">Correo electrónico</label>
-                    <input class="form-control" id="exampleInputEmail1" placeholder="Correo electrónico" type="email">
-                  </div>
+                <form role="form" [formGroup]="loginform">
                   <div class="form-group">
-                    <label class="control-label" for="exampleInputPassword1">Contraseña</label>
-                    <input class="form-control" id="exampleInputPassword1" placeholder="Contraseña" type="password">
-                  </div>
+                      <label class="sr-only" for="exampleInputEmail2">Correo electrónico</label>
+                      <input type="email" class="form-control" id="correo" placeholder="Correo electrónico" formControlName="correo" required>
+                    </div>
+                    <div class="form-group">
+                      <label class="sr-only" for="exampleInputPassword2">Contraseña</label>
+                      <input type="password" class="form-control" id="contrasena" placeholder="Contraseña" formControlName="contrasena" required>
+                    </div>
                     <div class="form-group">
       <div class="checkbox">
         <label>
@@ -23,7 +23,7 @@
         </label>
       </div>
     </div>
-                  <button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
+                  <button  (click)="login()" type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
                 </form>
                  <div class="row">
                   <div class="col-md-6">

@@ -74,9 +74,13 @@ catalogo(){
 }
 
 confirmar() {
+  if (window.sessionStorage.getItem('auth_key')){
   let x;
   if (confirm("¿ Enviar orden de compra ?") == true){
     this.generarOrden();
+  } 
+  } else {
+    this.router.navigate(['/login']);
   }
 }
 
@@ -156,7 +160,7 @@ generarOrden(){
                   }
 
                   let mail = {
-                    "para": "pabseb2@gmail.com",
+                    "para": local.correo,
                     "nombre": local.nombre,
                     "apellido": local.apellido,
                     "fecha": this.currentdate.getDate() + "/"
@@ -180,6 +184,8 @@ generarOrden(){
         }
       )
     }
+  } else {
+    this.router.navigate(['/login']);
   }
 }
 
